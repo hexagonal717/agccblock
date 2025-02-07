@@ -1,5 +1,12 @@
 $ruleName = "Adobe Genuine Service Server Block"
 
+function ShowHeading {
+    Clear-Host
+    Write-Host "==============================="
+    Write-Host "   AGCCBlock by hexagonal717"
+    Write-Host "==============================="
+}
+
 function CheckRuleStatus {
     $rule = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
     if ($rule) {
@@ -42,56 +49,82 @@ function DisableFirewallRule {
     }
 }
 
+function RemoveFirewallRule {
+    $rule = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
+    if ($rule) {
+        Remove-NetFirewallRule -DisplayName $ruleName
+        return "Firewall rule '$ruleName' removed successfully."
+    } else {
+        return "Firewall rule '$ruleName' does not exist, cannot remove."
+    }
+}
+
 # Submenu function for rule management
 function RuleManagementMenu {
     $submenuExit = $false
     while (-not $submenuExit) {
-        Clear-Host  # Clear the console before displaying the menu
+        ShowHeading  # Display the heading before the menu
 
         Write-Host "`nSelect an option:"
-        Write-Host "1. Check if the firewall rule exists."
-        Write-Host "2. Create the firewall rule if it doesn't exist."
-        Write-Host "3. Enable the firewall rule if it exists."
-        Write-Host "4. Disable the firewall rule if it exists."
-        Write-Host "5. Exit"
+        Write-Host "1. Create AGCCBlock Firewall Rule."
+        Write-Host "2. Remove AGCCBlock Firewall Rule."
+        Write-Host "3. Check for AGCCBlock Firewall Rule."
+        Write-Host "4. Enable AGCCBlock Firewall Rule."
+        Write-Host "5. Disable AGCCBlock Firewall Rule."
+        Write-Host "6. Exit"
 
-        $choice = Read-Host "Enter your choice (1, 2, 3, 4, or 5)"
+        $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5, or 6)"
 
         switch ($choice) {
             1 {
                 Clear-Host  # Clear the console before displaying the result
-                Write-Host "`nFirewall Rule Check"
-                $result = CheckRuleStatus
-                Write-Host $result
-                Write-Host "`nPress Enter to go back to the menu."
-            }
-            2 {
-                Clear-Host  # Clear the console before displaying the result
-                Write-Host "`nCreate Firewall Rule"
+                ShowHeading
+                Write-Host "`nCreate AGCCBlock Firewall Rule"
                 $result = CreateFirewallRule
                 Write-Host $result
                 Write-Host "`nPress Enter to go back to the menu."
+
+            }
+            2 {
+                Clear-Host  # Clear the console before displaying the result
+                ShowHeading
+                Write-Host "`nRemove AGCCBlock Firewall Rule"
+                $result = RemoveFirewallRule
+                Write-Host $result
+                Write-Host "`nPress Enter to go back to the menu."
+
             }
             3 {
                 Clear-Host  # Clear the console before displaying the result
-                Write-Host "`nEnable Firewall Rule"
-                $result = EnableFirewallRule
+                ShowHeading
+                Write-Host "`nCheck for AGCCBlock Firewall Rule"
+                $result = CheckRuleStatus
                 Write-Host $result
                 Write-Host "`nPress Enter to go back to the menu."
             }
             4 {
                 Clear-Host  # Clear the console before displaying the result
-                Write-Host "`nDisable Firewall Rule"
-                $result = DisableFirewallRule
+                ShowHeading
+                Write-Host "`nEnable AGCCBlock Firewall Rule"
+                $result = EnableFirewallRule
                 Write-Host $result
                 Write-Host "`nPress Enter to go back to the menu."
             }
             5 {
+                Clear-Host  # Clear the console before displaying the result
+                ShowHeading
+                Write-Host "`nDisable AGCCBlock Firewall Rule"
+                $result = DisableFirewallRule
+                Write-Host $result
+                Write-Host "`nPress Enter to go back to the menu."
+            }
+            6 {
                 Write-Host "Exiting..."
                 $submenuExit = $true
+                Exit  # Exit the PowerShell script and close the window
             }
             default {
-                Write-Host "Invalid choice. Please select 1, 2, 3, 4, or 5."
+                Write-Host "Invalid choice. Please select 1, 2, 3, 4, 5, or 6."
             }
         }
 
