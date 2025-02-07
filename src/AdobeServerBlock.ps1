@@ -66,11 +66,11 @@ function RuleManagementMenu {
         ShowHeading  # Display the heading before the menu
 
         Write-Host "`nSelect an option:"
-        Write-Host "1. Create AGCCBlock Firewall Rule."
-        Write-Host "2. Remove AGCCBlock Firewall Rule."
-        Write-Host "3. Check for AGCCBlock Firewall Rule."
-        Write-Host "4. Enable AGCCBlock Firewall Rule."
-        Write-Host "5. Disable AGCCBlock Firewall Rule."
+        Write-Host "1. Create AGCCBlock Firewall Rule"
+        Write-Host "2. Remove AGCCBlock Firewall Rule"
+        Write-Host "3. Check for AGCCBlock Firewall Rule"
+        Write-Host "4. Enable AGCCBlock Firewall Rule"
+        Write-Host "5. Disable AGCCBlock Firewall Rule"
         Write-Host "6. Exit"
 
         $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5, or 6)"

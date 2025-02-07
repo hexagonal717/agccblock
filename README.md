@@ -49,11 +49,23 @@ This PowerShell script and batch file combination helps manage a firewall rule t
 
 3. **Interactive Menu:**
     - After running the script, you'll be presented with an interactive menu with the following options:
-        1. **Check if the firewall rule exists**.
-        2. **Create the firewall rule** if it doesn't exist.
-        3. **Enable the firewall rule** if it exists.
-        4. **Disable the firewall rule** if it exists.
-        5. **Exit** the script.
+       1. **Create AGCCBlock Firewall Rule**  
+            This option will create a new firewall rule to block the Adobe Genuine Service Server.
+
+       2. **Remove AGCCBlock Firewall Rule**  
+            This option will remove the existing AGCCBlock firewall rule from your system.
+
+       3. **Check for AGCCBlock Firewall Rule**  
+            This option will check if the AGCCBlock firewall rule already exists on your system.
+
+       4. **Enable AGCCBlock Firewall Rule**  
+            This option will enable the AGCCBlock firewall rule, enforcing the block on the Adobe GCC Server.
+
+       5. **Disable AGCCBlock Firewall Rule**  
+            This option will disable the AGCCBlock firewall rule, allowing the Adobe GCC Server to bypass the firewall.
+
+       6. **Exit**  
+            This option will exit the menu and close the application.
 ---
 
 ## Files
