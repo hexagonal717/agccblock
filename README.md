@@ -8,6 +8,7 @@ This PowerShell script and batch file combination helps manage a firewall rule t
 
 - **Checks if the firewall rule exists** to block outbound connections for *AdobeGCClient.exe*.
 - **Creates the firewall rule** if it doesn't exist.
+- **Removes the firewall rule** if it exists, and you choose to delete it.
 - **Enables or disables the rule** if it exists.
 - **Simplifies the process** with batch file execution.
 
